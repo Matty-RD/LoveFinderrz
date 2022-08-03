@@ -6,9 +6,9 @@ def seed_users():
     demo = User(
         username='Demo', email='demo@aa.io', password='password', full_name="Demo Dimadoom", date_of_birth=0, city='new york', state='new york')
     rick = User(
-        username='rick', email='rick@aa.io', password='password', full_name="Rick Sanchez", date_of_birth=1, city='spikemuth', state='galar')
+        username='Rick', email='rick@aa.io', password='password', full_name="Rick Sanchez", date_of_birth=1, city='spikemuth', state='galar')
     tengen = User(
-        username='tengen', email='tengen@aa.io', password='password', full_name="Tengen Uzui", date_of_birth=2, city='Tokyo', state='Japan')
+        username='Tengen', email='tengen@aa.io', password='password', full_name="Tengen Uzui", date_of_birth=2, city='Tokyo', state='Japan')
     ally = User(
         username='Ally', email='ally@aa.io', password='password', full_name="Ally", date_of_birth=3, city='arizona', state='arizona')
     matty = User(

@@ -31,12 +31,17 @@ const NavBar = () => {
           <NavLink to='/posts' exact={true} activeClassName='active'>
             Post
           </NavLink>
+          </li>
           <li>
           <NavLink to='/posts/create' exact={true} activeClassName='active'>
             Post Form
           </NavLink>
           </li>
-        </li>
+          <li>
+          <NavLink to='/matches' exact={true} activeClassName='active'>
+            Matches
+          </NavLink>
+          </li>
         <li>
           <LogoutButton />
         </li>
