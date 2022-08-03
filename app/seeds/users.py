@@ -5,10 +5,10 @@ from app.models import db, User
 def seed_users():
     demo = User(
         username='Demo', email='demo@aa.io', password='password', full_name="Demo Dimadoom", date_of_birth=0, city='new york', state='new york')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', full_name="Marnie Piers ", date_of_birth=1, city='spikemuth', state='galar')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password', full_name="bobbie hill", date_of_birth=2, city='arlen', state='texas')
+    rick = User(
+        username='rick', email='rick@aa.io', password='password', full_name="Rick Sanchez", date_of_birth=1, city='spikemuth', state='galar')
+    tengen = User(
+        username='tengen', email='tengen@aa.io', password='password', full_name="Tengen Uzui", date_of_birth=2, city='Tokyo', state='Japan')
     ally = User(
         username='Ally', email='ally@aa.io', password='password', full_name="Ally", date_of_birth=3, city='arizona', state='arizona')
     matty = User(
@@ -17,8 +17,8 @@ def seed_users():
         username='Katie', email='katie@aa.io', password='password', full_name="Katie", date_of_birth=5, city='atlanta', state='georgia')
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(rick)
+    db.session.add(tengen)
     db.session.add(matty)
     db.session.add(ally)
     db.session.add(kaite)
