@@ -28,7 +28,24 @@ def match_post():
         second_userId=form.data['second_userId'],
         matched=form.data['matched']
     )
-
     db.session.add(match)
+    db.session.commit()
+    return match.to_dict()
+
+@match_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def put_match(id):
+    match = Match.query.get(id)
+    data = request.json
+    match.matched = data['matched']
+    db.session.commit()
+    return match.to_dict()
+
+
+@match_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_match(id):
+    match = Match.query.get(id)
+    db.session.delete(match)
     db.session.commit()
     return match.to_dict()
