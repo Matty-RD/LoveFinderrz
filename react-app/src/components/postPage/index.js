@@ -16,13 +16,12 @@ function PostsPage() {
         dispatch(getAllPostsThunk());
       }, [dispatch]);
 
-    const DeleteClick = async(e) => {
+    const DeleteClick = (e) => {
         e.preventDefault();
         const buttonData = Number(e.target.id);
         for (const post of posts) {
           if (post.id === buttonData) {
             dispatch(deletePostThunk(post, buttonData))
-            await dispatch(getAllPostsThunk());
             history.push("/posts/")
           }
         }
@@ -45,7 +44,6 @@ function PostsPage() {
           second_userId,
           matched
         };
-        console.log(match)
         dispatch(createMatchThunk(match))
             history.push(`/matches`)
         }
