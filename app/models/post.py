@@ -20,5 +20,13 @@ class Post(db.Model):
 
     def to_dict(self):
         return {
-            'id': self.id
+            'id': self.id,
+            'userId': self.userId,
+            'matchId': self.matchId,
+            'caption': self.caption,
+            'title': self.title,
+            'post_pic': self.post_pic,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'user': self.userIds.to_dict(),
         }

@@ -7,6 +7,9 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import PostsPage from './components/postPage';
+import EditPostsPage from './components/postEdit';
+import CreatePostsPage from './components/postForm';
 import { authenticate } from './store/session';
 
 function App() {
@@ -28,6 +31,15 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+      <Route path='/posts' exact={true}>
+          <PostsPage />
+        </Route>
+        <Route path='/posts/create' exact={true}>
+          <CreatePostsPage />
+        </Route>
+        <Route path='/posts/edit/:id'>
+          <EditPostsPage />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
