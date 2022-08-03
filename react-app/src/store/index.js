@@ -2,11 +2,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { postsReducer } from './post';
 import thunk from 'redux-thunk';
 import session from './session'
+import { matchesReducer } from './match';
 
 
 const rootReducer = combineReducers({
   session,
   posts: postsReducer,
+  matches: matchesReducer
 });
 
 
