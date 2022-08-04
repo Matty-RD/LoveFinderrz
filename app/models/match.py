@@ -22,6 +22,6 @@ class Match(db.Model):
             'first_userId': self.first_userId,
             'second_userId': self.second_userId,
             'matched': self.matched,
-            'liker': self.first_userIds.to_dict(),
-            'liked': self.second_userIds.to_dict(),
+            'liker': self.firstUserIds.to_dict(),
+            'liked': self.secondUserIds.to_dict(),
         }
