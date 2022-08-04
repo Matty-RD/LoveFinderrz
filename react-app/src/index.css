@@ -11,3 +11,43 @@ div {
     justify-content: center;
     padding: 20px;
 }
+
+button {
+    width: 75px;
+    height: 20px;
+    border: lightslategrey 2px solid;
+    outline: none;
+    color: #A24857;
+    background-color: #DFF0F9;
+    position: center;
+    z-index: 0;
+    border-radius: 40px;
+}
+
+.buttonDiv {
+    display: inline-block;
+    padding: 5px;
+}
+
+form {
+    display: grid;
+    justify-content: center;
+    border: lightslategrey 2px solid;
+    padding: 40px;
+}
+
+.navButtons {
+    display: inline-block;
+    padding: 5px;
+}
+
+.innerNavButton {
+    font-size: 14px;
+    border: lightslategrey 2px solid;
+    border-radius: 40px;
+    background-color: #DFF0F9;
+    color: #A24857;
+    margin-right:1px;
+    padding: 2px;
+    text-decoration: none;
+}

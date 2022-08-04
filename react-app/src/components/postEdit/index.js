@@ -40,12 +40,16 @@ function EditPostsPage() {
 
   return (
     <form>
+      <div>
       <h1>Edit your POST!</h1>
       <input type="text" className='inputs' placeholder="Title" value={title} onChange={updateTitle}/>
       <input type="text" className='inputs' placeholder="Post Picture" value={post_pic} onChange={updatePost_pic}/>
       <input type="text" className='inputs' placeholder="Caption" value={caption} onChange={updateCaption}/>
-      <button type="submit" onClick={handleSubmit}>POST THAT POST HOMIE</button>
+      <div className='buttonDiv'>
+      <button type="submit" onClick={handleSubmit}>Update</button>
       <button type="button" onClick={handleCancelClick}>Cancel</button>
+      </div>
+      </div>
     </form>
   );
 

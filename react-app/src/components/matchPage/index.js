@@ -1,6 +1,7 @@
 import { getAllMatchesThunk, updateMatchThunk, deleteMatchesThunk } from "../../store/match";
 import { useDispatch, useSelector} from "react-redux";
 import { useEffect} from "react";
+import './matchPage.css'
 
 function MatchesPage() {
     const dispatch = useDispatch();
@@ -37,13 +38,15 @@ function MatchesPage() {
         <div>
         { matches.map(match =>{
         return (
-        <div key={match.id} style={{border:'solid'}}>
+        <div key={match.id} className="matchPage">
         <h1>Matches!!</h1>
         <h3>Id for liker: {match.first_userId}</h3>
         <h3>Id for liked: {match.second_userId}</h3>
         <h3>Match Statues: {match.matched.toString()}</h3>
+        <div className="buttonDiv">
         <button type='submit' id={match.id} onClick={matchButton}>Match?</button>
         <button type='submit' id={match.id} onClick={deleteButton}>Pass?</button>
+        </div>
         </div>
         )})}
         </div>
