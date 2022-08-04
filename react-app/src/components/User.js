@@ -23,13 +23,22 @@ function User() {
   return (
     <ul>
       <li>
-        <strong>User Id</strong> {userId}
+        <img alt='profile pic' className="profilepicture" src={user.profile_pic}/>
       </li>
       <li>
-        <strong>Username</strong> {user.username}
+        <strong>User Id:</strong> {userId}
       </li>
       <li>
-        <strong>Email</strong> {user.email}
+        <strong>Username:</strong> {user.username}
+      </li>
+      <li>
+        <strong>Full Name:</strong> {user.full_name}
+      </li>
+      <li>
+        <strong>City:</strong> {user.city}
+      </li>
+      <li>
+        <strong>State:</strong> {user.state}
       </li>
     </ul>
   );

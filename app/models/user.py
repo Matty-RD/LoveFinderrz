@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     full_name = db.Column(db.String(40), nullable=False)
     date_of_birth = db.Column(db.Integer, nullable=False)
-    profile_pic = db.Column(db.String(255), default='https://pbs.twimg.com/media/EAmSLPPU4AADHjj.png')
+    profile_pic = db.Column(db.String(255), default='https://img.poki.com/cdn-cgi/image/quality=78,width=600,height=600,fit=cover,f=auto/9afd3b92ab41ffca7f368a8fcbd6d39a75894efe0edbc14cf1f067cf625e6678.png')
     city = db.Column(db.String(40), nullable=False)
     state = db.Column(db.String(40), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.now())
@@ -38,5 +38,10 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'profile_pic': self.profile_pic,
+            'full_name': self.full_name,
+            'date_of_birth': self.date_of_birth,
+            'city': self.city,
+            'state': self.state
         }
