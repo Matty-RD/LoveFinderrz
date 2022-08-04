@@ -38,11 +38,13 @@ function CreatePostsPage() {
 
       return (
         <form>
+          <div>
           <h2>Create new post</h2>
           <input type="text" placeholder="Title" value={title} onChange={updateTitle}/>
           <input type="text" placeholder="Post Pic" value={post_pic} onChange={updatePic}/>
           <input type="text" placeholder="Caption" value={caption} onChange={updateCaption}/>
           <button className="button" type="submit" onClick={handleSubmit}>Post</button>
+          </div>
         </form>
       );
 
