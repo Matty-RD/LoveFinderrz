@@ -12,29 +12,29 @@ const NavBar = () => {
     <nav>
       <ul>
         <li className='navButtons'>
-          <NavLink to='/' exact={true} activeClassName='active' className='innerNavButton'>
+          <button><NavLink to='/' exact={true} activeClassName='active' className='innerNavButton'>
             Home
-          </NavLink>
+          </NavLink></button>
         </li>
-        <li className='navButtons'>
+        {/* <li className='navButtons'>
           <NavLink to='/users' exact={true} activeClassName='active' className='innerNavButton'>
             Users
           </NavLink>
-          </li>
+          </li> */}
           <li className='navButtons'>
-          <NavLink to='/posts' exact={true} activeClassName='active' className='innerNavButton'>
+          <button><NavLink to='/posts' exact={true} activeClassName='active' className='innerNavButton'>
             Post
-          </NavLink>
+          </NavLink></button>
           </li>
           <li className='navButtons'>
-          <NavLink to='/posts/create' exact={true} activeClassName='active' className='innerNavButton'>
-            Post Form
-          </NavLink>
+          <button><NavLink to='/posts/create' exact={true} activeClassName='active' className='innerNavButton'>
+            Add Post
+          </NavLink></button>
           </li>
           <li className='navButtons'>
-          <NavLink to='/matches' exact={true} activeClassName='active' className='innerNavButton'>
+          <button><NavLink to='/matches' exact={true} activeClassName='active' className='innerNavButton'>
             Matches
-          </NavLink>
+          </NavLink></button>
           </li>
         <li className='navButtons'>
           <LogoutButton />
@@ -47,19 +47,19 @@ const NavBar = () => {
     <nav>
       <ul>
           <li className='navButtons'>
-          <NavLink to='/' exact={true} activeClassName='active' className='innerNavButton'>
+          <button><NavLink to='/' exact={true} activeClassName='active' className='innerNavButton'>
             Home
-          </NavLink>
+          </NavLink></button>
         </li>
         <li className='navButtons'>
-          <NavLink to='/login' exact={true} activeClassName='active' className='innerNavButton'>
+        <button><NavLink to='/login' exact={true} activeClassName='active' className='innerNavButton'>
             Login
-          </NavLink>
+          </NavLink></button>
         </li>
         <li className='navButtons'>
-          <NavLink to='/sign-up' exact={true} activeClassName='active' className='innerNavButton'>
+        <button><NavLink to='/sign-up' exact={true} activeClassName='active' className='innerNavButton'>
             Sign Up
-          </NavLink>
+          </NavLink></button>
         </li>
       </ul>
   </nav>

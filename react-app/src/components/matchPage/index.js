@@ -1,6 +1,7 @@
 import { getAllMatchesThunk, updateMatchThunk, deleteMatchesThunk } from "../../store/match";
 import { useDispatch, useSelector} from "react-redux";
 import { useEffect} from "react";
+import { NavLink } from 'react-router-dom';
 import './matchPage.css'
 
 function MatchesPage() {
@@ -44,13 +45,13 @@ function MatchesPage() {
       return (
         <>
         <div>
+          <h1>Here are your Matches!</h1>
+          <p>Feel free to view their page by clicking their name!</p>
         {usersMatches.map(filteredMatch  =>{
           return (
             <div key={filteredMatch.id} className="matchPage">
-            <h1>Matches!!</h1>
-            <h3>You are liked by: {filteredMatch.liker.username}</h3>
+            <h1><NavLink to={`/users/${filteredMatch.id}`}>{filteredMatch.liker.username}</NavLink></h1>
             <img alt='' className="profilepicture" src={filteredMatch.liker.profile_pic}/>
-            <h3>Match Statues: {filteredMatch.matched.toString()}</h3>
             <div className="buttonDiv">
             <button type='submit' id={filteredMatch.id} onClick={matchButton}>Match?</button>
             <button type='submit' id={filteredMatch.id} onClick={deleteM}>Pass?</button>

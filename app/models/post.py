@@ -28,4 +28,5 @@ class Post(db.Model):
             'post_pic': self.post_pic,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
+            'user': self.userIds.to_dict()
         }

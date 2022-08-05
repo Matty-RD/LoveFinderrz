@@ -1,8 +1,28 @@
 .matchPage {
-    border: #BCB7AD solid 4px
+    display: grid;
+    justify-content: center;
+    border: lightcoral solid 4px;
+    padding: 10px;
+    margin: 10px;
+    background-color: azure;
 }
 
 .noMatches{
     display: grid;
     justify-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin: 0px;
+}
+
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
 }
