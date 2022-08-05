@@ -9,6 +9,7 @@ function PostsPage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const sessionUser = useSelector(state => state.session.user);
     const user = useSelector((state) => state.session.user)
     const postsObject = useSelector((state) => state.posts);
     const posts = Object.values(postsObject);
@@ -16,17 +17,6 @@ function PostsPage() {
     useEffect(() => {
         dispatch(getAllPostsThunk());
       }, [dispatch]);
-
-    const DeleteClick = (e) => {
-        e.preventDefault();
-        const buttonData = Number(e.target.id);
-        for (const post of posts) {
-          if (post.id === buttonData) {
-            dispatch(deletePostThunk(post, buttonData))
-            history.push("/posts/")
-          }
-        }
-      }
 
     const EditClick = (e) => {
       e.preventDefault();
@@ -46,29 +36,44 @@ function PostsPage() {
           matched
         };
         dispatch(createMatchThunk(match))
-            history.push(`/matches`)
         }
+
 
       return (
         <>
         <div>
-        { posts.map(post =>{
-        return (
-        <div key={post.id} className='postPage'>
-        <h1>Posted by: {post.user.username}</h1>
-        <h3>Title: {post.title}</h3>
-        <img alt='' src={post.post_pic} width="400" height="210" className="postpic"/>
-        <p>caption: {post.caption}</p>
-        <div className='buttonDiv'>
-        <button type="button" id={post.id} onClick={DeleteClick}>Delete</button>
-        <button type="button" id={post.id} onClick={EditClick}>Edit</button>
-        <button type="submit" id={post.userId} onClick={AdmireClick}>Admire</button>
-        </div>
-        </div>
-        )})}
+        {posts.map(post =>{
+        if(sessionUser.id === post.userId) {
+          return (
+            <div key={post.id} className='postPage'>
+            <h1>Posted by: {post.userId}</h1>
+            <h3>Title: {post.title}</h3>
+            <img alt='' src={post.post_pic} width="400" height="210" className="postpic"/>
+            <p>caption: {post.caption}</p>
+            <div className='buttonDiv'>
+            <button type="button" onClick={() => dispatch(deletePostThunk(post.id))}>Delete</button>
+            <button type="button" id={post.id} onClick={EditClick}>Edit</button>
+            </div>
+            </div>
+            )
+        } else {
+          return (
+            <div key={post.id} className='postPage'>
+            <h1>Posted by: {post.userId}</h1>
+            <h3>Title: {post.title}</h3>
+            <img alt='' src={post.post_pic} width="400" height="210" className="postpic"/>
+            <p>caption: {post.caption}</p>
+            <div className='buttonDiv'>
+            <button type="submit" id={post.userId} onClick={AdmireClick}>Admire</button>
+            </div>
+            </div>
+            )
+        }
+      })}
         </div>
         </>
       );
     }
+
 
   export default PostsPage;

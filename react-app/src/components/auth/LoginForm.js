@@ -26,9 +26,19 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const demoUser = async (e) => {
+  const demoUserOne = async (e) => {
     e.preventDefault();
     const DemoEmail = "demo@aa.io"
+    const DemoPassword = "password"
+    const data = await dispatch(login(DemoEmail, DemoPassword));
+    if (data) {
+      setErrors(data);
+    }
+  };
+
+  const demoUserTwo = async (e) => {
+    e.preventDefault();
+    const DemoEmail = "Gojo@aa.io"
     const DemoPassword = "password"
     const data = await dispatch(login(DemoEmail, DemoPassword));
     if (data) {
@@ -68,7 +78,8 @@ const LoginForm = () => {
         />
         <div className='buttonDiv'>
         <button type='submit'>Login</button>
-        <button type='submit' className="button" onClick={demoUser}>Demo</button>
+        <button type='submit' className="button" onClick={demoUserOne}>Demo 1</button>
+        <button type='submit' className="button" onClick={demoUserTwo}>Demo 2</button>
         </div>
       </div>
     </form>

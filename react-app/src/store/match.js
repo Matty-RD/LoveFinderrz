@@ -60,13 +60,12 @@ export const updateMatchThunk = (match, id) => async(dispatch) => {
     }
   }
 
-export const deleteMatchesThunk = (deleteMatch, id) => async(dispatch) => {
+export const deleteMatchesThunk = (id) => async(dispatch) => {
   const res = await fetch(`/api/matches/${id}`, {
       method: 'DELETE',
   });
-
   if (res.ok) {
-      const deleted = await res.json(deleteMatch);
+      const deleted = await res.json();
       dispatch(deleteMatches(deleted));
       return deleted
   }

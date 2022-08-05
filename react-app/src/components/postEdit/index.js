@@ -28,7 +28,7 @@ function EditPostsPage() {
         post_pic,
         caption
       };
-      dispatch(updatePostThunk(updatedPost, id));
+      dispatch(updatePostThunk(updatedPost, singlePost.id));
     history.push("/posts/");
   }
 
