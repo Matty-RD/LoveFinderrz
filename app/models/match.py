@@ -18,10 +18,10 @@ class Match(db.Model):
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'first_userId': self.first_userId,
-            'second_userId': self.second_userId,
-            'matched': self.matched,
-            'liker': self.firstUserIds.to_dict(),
-            'liked': self.secondUserIds.to_dict()
+            "id": self.id,
+            "first_userId": self.first_userId,
+            "second_userId": self.second_userId,
+            "matched": self.matched,
+            "liker": self.firstUserIds.to_dict(),
+            "liked": self.secondUserIds.to_dict()
         }

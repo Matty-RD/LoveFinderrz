@@ -25,7 +25,7 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
-  };
+};
 
   const updateUsername = (e) => {setUsername(e.target.value)};
   const updateEmail = (e) => {setEmail(e.target.value)};
@@ -57,7 +57,7 @@ const SignUpForm = () => {
         <input type='text' name='full_name' onChange={updateFullName} value={full_name} required={true}></input>
       </div>
       <div>
-        <label>Date of Birth</label>
+        <label>Age</label>
         <input type='integer' name='date_of_birth' onChange={updateDOB} value={date_of_birth} required={true}></input>
       </div>
       <div>

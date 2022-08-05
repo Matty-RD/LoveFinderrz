@@ -26,11 +26,10 @@ function MatchesPage() {
     }
 
 
-    const deleteM = async (e) => {
+    const deleteM = (e) => {
       e.preventDefault();
       const id = e.target.id;
       dispatch(deleteMatchesThunk(id))
-      await window.location.reload(false);
     }
 
     if(usersMatches.length === 0) {
