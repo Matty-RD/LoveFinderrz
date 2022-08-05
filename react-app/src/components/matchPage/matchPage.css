@@ -1,3 +1,8 @@
 .matchPage {
     border: #BCB7AD solid 4px
 }
+
+.noMatches{
+    display: grid;
+    justify-items: center;
+}
