@@ -18,9 +18,9 @@ const updateMatch = (match) => ({
   match,
 })
 
-const deleteMatches = deleteMatch => ({
+const deleteMatches = id => ({
   type: DELETE_MATCHES,
-  deleteMatch,
+  id,
 })
 
 export const getAllMatchesThunk = () => async(dispatch) => {
@@ -66,7 +66,9 @@ export const deleteMatchesThunk = (id) => async(dispatch) => {
   });
   if (res.ok) {
       const deleted = await res.json();
-      dispatch(deleteMatches(deleted));
+      if(deleted.deleted === "match") {
+        dispatch(deleteMatches(id));
+      }
       return deleted
   }
 }
@@ -87,7 +89,7 @@ export const matchesReducer = (state = initialState, action) => {
               newState = {...state, [action.match.id]: action.match,};
                 return newState
             case DELETE_MATCHES:
-              delete newState[action.deleteMatch.id];
+              delete newState[action.id];
               return newState
             default:
                 return state;

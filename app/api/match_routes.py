@@ -48,4 +48,4 @@ def delete_match(id):
     match = Match.query.get(id)
     db.session.delete(match)
     db.session.commit()
-    return 'match'
+    return {"deleted": "match"}
