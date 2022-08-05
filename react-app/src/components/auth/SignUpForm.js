@@ -12,7 +12,6 @@ const SignUpForm = () => {
   const [date_of_birth, setDOB] = useState(0);
   const [profile_pic, setProfilePic] = useState('https://pbs.twimg.com/media/EAmSLPPU4AADHjj.png');
   const [city, setCity] = useState('');
-  const [state, setState] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -20,7 +19,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password, full_name, date_of_birth, profile_pic, city, state));
+      const data = await dispatch(signUp(username, email, password, full_name, date_of_birth, profile_pic, city));
       if (data) {
         setErrors(data)
       }
@@ -35,7 +34,6 @@ const SignUpForm = () => {
   const updateDOB = (e) => {setDOB(e.target.value)};
   const updateProfilePic = (e) => {setProfilePic(e.target.value)};
   const updateCity = (e) => {setCity(e.target.value)};
-  const updateState = (e) => {setState(e.target.value)};
 
   if (user) {
     return <Redirect to='/' />;
@@ -57,8 +55,8 @@ const SignUpForm = () => {
         <input type='text' name='full_name' onChange={updateFullName} value={full_name} required={true}></input>
       </div>
       <div>
-        <label>Age</label>
-        <input type='integer' name='date_of_birth' onChange={updateDOB} value={date_of_birth} required={true}></input>
+        <label>Date of Birth</label>
+        <input type='date' name='date_of_birth' onChange={updateDOB} value={date_of_birth} required={true}></input>
       </div>
       <div>
         <label>Profile Picture</label>
@@ -67,10 +65,6 @@ const SignUpForm = () => {
       <div>
         <label>City</label>
         <input type='text' name='city' onChange={updateCity} value={city} required={true}></input>
-      </div>
-      <div>
-        <label>State</label>
-        <input type='text' name='state' onChange={updateState} value={state} required={true}></input>
       </div>
       <div>
         <label>Email</label>

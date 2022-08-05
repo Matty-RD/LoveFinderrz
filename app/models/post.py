@@ -8,7 +8,6 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
-    matchId = db.Column(db.Integer,db.ForeignKey("matches.id"))
     caption = db.Column(db.String(400), nullable=False)
     title = db.Column(db.String(40), nullable=False)
     post_pic = db.Column(db.String(255))
@@ -16,7 +15,6 @@ class Post(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
     userIds = db.relationship("User", back_populates="posts")
-    matchIds = db.relationship("Match", back_populates="postIds")
 
     def to_dict(self):
         return {
