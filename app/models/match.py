@@ -14,7 +14,6 @@ class Match(db.Model):
 
     firstUserIds = db.relationship("User", back_populates="matchesOne", foreign_keys=[first_userId])
     secondUserIds = db.relationship("User", back_populates="matchesTwo", foreign_keys=[second_userId])
-    postIds = db.relationship("Post", back_populates="matchIds")
 
     def to_dict(self):
         return {
