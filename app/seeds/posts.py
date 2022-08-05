@@ -10,7 +10,7 @@ def seed_posts():
     post3 = Post(
         caption='so flashy!', title='Isnt this crazy', post_pic='https://64.media.tumblr.com/7f0b9046acc2010e26ca7f89572170ac/06ac4dfc86e3a263-e2/s640x960/26ef83f98b68c110e1851fed502bd46d3398625a.pnj', userId=3)
     post4 = Post(
-        caption='Space might be to big!', title='Space just how big is it?', post_pic="https://www.nasa.gov/sites/default/files/thumbnails/image/web_first_images_release.png" userId=4)
+        caption='Space might be to big!', title='Space just how big is it?', post_pic="https://www.nasa.gov/sites/default/files/thumbnails/image/web_first_images_release.png", userId=4)
     post5 = Post(
         caption='You should always try to recycle!', title='Did you know', post_pic='https://m.media-amazon.com/images/M/MV5BYmIwZjE2YTctNDY4OS00ZDQ1LWE3YTctOWFjZmYzNjA3NWM0XkEyXkFqcGdeQXVyMTI5NTQ3MjEx._V1_.jpg', userId=5)
     post6 = Post(
