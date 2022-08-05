@@ -1,3 +1,16 @@
 .postPage {
-    border: #BCB7AD solid 4px
+    border: blueviolet solid 4px;
+    padding: 10px;
+    margin: 10px;
+    background-color: azure;
+}
+
+.posterName {
+    display: flex;
+    align-content: left;
+}
+
+.postTitle {
+    display: grid;
+    justify-content: center;
 }
