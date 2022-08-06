@@ -20,7 +20,6 @@ class Post(db.Model):
         return {
             'id': self.id,
             'userId': self.userId,
-            'matchId': self.matchId,
             'caption': self.caption,
             'title': self.title,
             'post_pic': self.post_pic,
