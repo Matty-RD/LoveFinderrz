@@ -9,8 +9,10 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import PostsPage from './components/postPage';
 import MatchesPage from './components/matchPage';
+import MatchedPage from './components/matchedPage';
 import EditPostsPage from './components/postEdit';
 import CreatePostsPage from './components/postForm';
+import MessagesPage from './components/messagePAge';
 import { authenticate } from './store/session';
 
 function App() {
@@ -43,6 +45,12 @@ function App() {
         </Route>
         <Route path='/matches' exact={true}>
           <MatchesPage />
+        </Route>
+        <Route path='/matched' exact={true}>
+          <MatchedPage />
+        </Route>
+        <Route path='/messages' exact={true}>
+          <MessagesPage />
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />

@@ -14,9 +14,11 @@ function PostsPage() {
     const postsObject = useSelector((state) => state.posts);
     const posts = Object.values(postsObject);
 
+
     useEffect(() => {
         dispatch(getAllPostsThunk());
       }, [dispatch]);
+
 
     const EditClick = (e) => {
       e.preventDefault();
@@ -24,19 +26,23 @@ function PostsPage() {
           history.push(`/posts/edit/${buttonData}`)
       }
 
+
       const AdmireClick = (e) => {
         e.preventDefault();
+
+        const admireButton = document.getElementById(e.target.id);
+        admireButton.style.display = 'none';
+
         const first_userId = Number(user.id);
         const second_userId = Number(e.target.id);
         const matched = false;
-
         const match = {
           first_userId,
           second_userId,
           matched
         };
         dispatch(createMatchThunk(match))
-        }
+      }
 
 
       return (
@@ -44,6 +50,7 @@ function PostsPage() {
         <div>
         {posts.map(post =>{
         if(sessionUser.id === post.userId) {
+
           return (
             <div key={post.id} className='postPage'>
             <h1 className='posterName' ><NavLink to={`/users/${post.userId}`}>{post.user.username}</NavLink></h1>
@@ -56,6 +63,7 @@ function PostsPage() {
             </div>
             </div>
             )
+
         } else {
           return (
             <div key={post.id} className='postPage'>

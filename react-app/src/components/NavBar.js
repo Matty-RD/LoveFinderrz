@@ -33,7 +33,17 @@ const NavBar = () => {
           </li>
           <li className='navButtons'>
           <button><NavLink to='/matches' exact={true} activeClassName='active' className='innerNavButton'>
+            Admires
+          </NavLink></button>
+          </li>
+          <li className='navButtons'>
+          <button><NavLink to='/matched' exact={true} activeClassName='active' className='innerNavButton'>
             Matches
+          </NavLink></button>
+          </li>
+          <li className='navButtons'>
+          <button><NavLink to='/messages' exact={true} activeClassName='active' className='innerNavButton'>
+            Messages
           </NavLink></button>
           </li>
         <li className='navButtons'>
