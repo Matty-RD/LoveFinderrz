@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 0dedd5d1d456
-Revises: 
+Revises:
 Create Date: 2022-08-05 22:41:10.283378
 
 """
@@ -35,6 +35,7 @@ def upgrade():
     )
     op.create_table('matches',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('postId', sa.Integer(), nullable=False),
     sa.Column('first_userId', sa.Integer(), nullable=False),
     sa.Column('second_userId', sa.Integer(), nullable=True),
     sa.Column('matched', sa.Boolean(), nullable=True),
@@ -42,11 +43,13 @@ def upgrade():
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['first_userId'], ['users.id'], ),
     sa.ForeignKeyConstraint(['second_userId'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['postId'], ['matches.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
+    sa.Column('matchId', sa.Integer()),
     sa.Column('caption', sa.String(length=400), nullable=False),
     sa.Column('title', sa.String(length=40), nullable=False),
     sa.Column('post_pic', sa.String(length=255), nullable=True),

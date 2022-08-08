@@ -3,6 +3,7 @@ from wtforms import IntegerField, BooleanField
 from wtforms.validators import DataRequired
 
 class MatchesForm(FlaskForm):
+    postId = IntegerField('postId', validators=[DataRequired()])
     first_userId = IntegerField('first_userId', validators=[DataRequired()])
     second_userId = IntegerField('second_userId', validators=[DataRequired()])
     matched = BooleanField('matched', validators=[DataRequired()])

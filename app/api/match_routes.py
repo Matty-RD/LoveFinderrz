@@ -24,6 +24,7 @@ def match_post():
     form = MatchesForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     match = Match(
+        postId=form.data['postId'],
         first_userId=form.data['first_userId'],
         second_userId=form.data['second_userId'],
         matched=form.data['matched']

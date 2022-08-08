@@ -6,6 +6,7 @@ class Match(db.Model):
     __tablename__ = 'matches'
 
     id = db.Column(db.Integer, primary_key=True)
+    postId = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
     first_userId = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
     second_userId = db.Column(db.Integer,db.ForeignKey("users.id"))
     matched = db.Column(db.Boolean)
@@ -14,10 +15,12 @@ class Match(db.Model):
 
     firstUserIds = db.relationship("User", back_populates="matchesOne", foreign_keys=[first_userId])
     secondUserIds = db.relationship("User", back_populates="matchesTwo", foreign_keys=[second_userId])
+    postIds = db.relationship("Post", back_populates="matches")
 
     def to_dict(self):
         return {
             "id": self.id,
+            "postId": self.postId,
             "first_userId": self.first_userId,
             "second_userId": self.second_userId,
             "matched": self.matched,
