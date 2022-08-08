@@ -1,12 +1,12 @@
 import { getAllMatchesThunk, deleteMatchesThunk } from "../../store/match";
 import { useDispatch, useSelector} from "react-redux";
 import { useEffect} from "react";
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './matchPage.css'
 
 function MatchedPage() {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
 
     const sessionUser = useSelector(state => state.session.user);
     const matchesObject = useSelector((state) => state.matches);
@@ -19,14 +19,14 @@ function MatchedPage() {
 
     const deleteM = (e) => {
       e.preventDefault();
-      const id = e.target.id;
-      dispatch(deleteMatchesThunk(id))
+      const matchId = Number(e.target.id);
+      dispatch(deleteMatchesThunk(matchId))
     }
 
-    const messages = (e) => {
-      e.preventDefault();
-      history.push('/messages')
-    }
+    // const messages = (e) => {
+    //   e.preventDefault();
+    //   history.push('/messages')
+    // }
 
     if(usersMatches.length === 0) {
       return (
@@ -46,7 +46,7 @@ function MatchedPage() {
             <h1><NavLink to={`/users/${filteredMatch.id}`}>{filteredMatch.liker.username}</NavLink></h1>
             <img alt='' className="profilepicture" src={filteredMatch.liker.profile_pic}/>
             <div className="buttonDiv">
-            <button type='submit' id={filteredMatch.id} onClick={messages}>Message</button>
+            {/* <button type='submit' id={filteredMatch.id} onClick={messages}>Message</button> */}
             <button type='submit' id={filteredMatch.id} onClick={deleteM}>Unmatch</button>
             </div>
             </div>

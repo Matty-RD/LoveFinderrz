@@ -26,7 +26,7 @@ function PostsPage() {
 
     const EditClick = (e) => {
       e.preventDefault();
-      const buttonData = Number(e.target.post.id);
+      const buttonData = Number(e.target.id);
           history.push(`/posts/edit/${buttonData}`)
       }
 
@@ -42,7 +42,6 @@ function PostsPage() {
           second_userId,
           matched
         };
-
         dispatch(createMatchThunk(match))
       }
 
