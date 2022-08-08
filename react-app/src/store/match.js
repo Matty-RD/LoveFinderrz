@@ -68,6 +68,9 @@ export const deleteMatchesThunk = (id) => async(dispatch) => {
       const deleted = await res.json();
       if(deleted.deleted === "match") {
         dispatch(deleteMatches(id));
+      } else {
+        const error = await res.json()
+        console.log(error)
       }
       return deleted
   }

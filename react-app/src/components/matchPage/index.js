@@ -20,7 +20,6 @@ function MatchesPage() {
       e.preventDefault();
       const id = e.target.id
       const matched = true;
-      console.log(usersMatches)
       const updateMatch = {
         matched,
       };
@@ -30,8 +29,8 @@ function MatchesPage() {
 
     const deleteM = (e) => {
       e.preventDefault();
-      const id = e.target.id;
-      dispatch(deleteMatchesThunk(id))
+      const matchId = Number(e.target.id);
+      dispatch(deleteMatchesThunk(matchId))
     }
 
 
