@@ -15,6 +15,7 @@ class Post(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
     userIds = db.relationship("User", back_populates="posts")
+    matches = db.relationship("Match", back_populates="postIds")
 
     def to_dict(self):
         return {

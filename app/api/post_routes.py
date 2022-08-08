@@ -26,7 +26,6 @@ def post_post():
     if form.validate_on_submit():
         post = Post(
             userId=form.data['userId'],
-            matchId=form.data['matchId'],
             title=form.data['title'],
             post_pic=form.data['post_pic'],
             caption=form.data['caption']

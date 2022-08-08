@@ -1,4 +1,5 @@
 import { getAllPostsThunk, deletePostThunk } from "../../store/post";
+import { getAllMatchesThunk } from "../../store/match";
 import { createMatchThunk } from "../../store/match"
 import { useDispatch, useSelector} from "react-redux";
 import { useEffect} from "react";
@@ -13,34 +14,35 @@ function PostsPage() {
     const user = useSelector((state) => state.session.user)
     const postsObject = useSelector((state) => state.posts);
     const posts = Object.values(postsObject);
-
+    const matchesObject = useSelector((state) => state.matches);
+    const matches = Object.values(matchesObject);
+    const usersMatches = matches.filter(match => match.first_userId === sessionUser.id)
 
     useEffect(() => {
         dispatch(getAllPostsThunk());
+        dispatch(getAllMatchesThunk());
       }, [dispatch]);
 
 
     const EditClick = (e) => {
       e.preventDefault();
-      const buttonData = Number(e.target.id);
+      const buttonData = Number(e.target.post.id);
           history.push(`/posts/edit/${buttonData}`)
       }
 
 
-      const AdmireClick = (e) => {
-        e.preventDefault();
-
-        const admireButton = document.getElementById(e.target.id);
-        admireButton.style.display = 'none';
-
+      const AdmireClick = (postInfo) => {
+        const postId = postInfo.id
         const first_userId = Number(user.id);
-        const second_userId = Number(e.target.id);
+        const second_userId = Number(postInfo.userId);
         const matched = false;
         const match = {
+          postId,
           first_userId,
           second_userId,
           matched
         };
+
         dispatch(createMatchThunk(match))
       }
 
@@ -49,10 +51,9 @@ function PostsPage() {
         <>
         <div>
         {posts.map(post =>{
-        if(sessionUser.id === post.userId) {
-
-          return (
-            <div key={post.id} className='postPage'>
+          if(sessionUser.id === post.userId) {
+            return (
+              <div key={post.id} className='postPage'>
             <h1 className='posterName' ><NavLink to={`/users/${post.userId}`}>{post.user.username}</NavLink></h1>
             <h4 className="postTitle">{post.title}</h4>
             <img alt='' src={post.post_pic} width="400" height="210" className="postpic"/>
@@ -64,7 +65,8 @@ function PostsPage() {
             </div>
             )
 
-        } else {
+          } else {
+          let button = <button type="submit" className='admire' id={'test'} onClick={() => AdmireClick(post)}>Admire</button>
           return (
             <div key={post.id} className='postPage'>
             <h1 className='posterName' ><NavLink to={`/users/${post.userId}`}>{post.user.username}</NavLink></h1>
@@ -72,7 +74,16 @@ function PostsPage() {
             <img alt='' src={post.post_pic} width="400" height="210" className="postpic"/>
             <p>{post.caption}</p>
             <div className='buttonDiv'>
-            <button type="submit" id={post.userId} onClick={AdmireClick}>Admire</button>
+            {usersMatches.map(match => {
+              if(match.postId === post.id && match.first_userId === user.id) {
+                button = <button type="submit" className='admire' id={'test'} onClick={() => AdmireClick(post)} disabled>Admired</button>
+                return
+              } else if (match.postId === post.id && match.first_userId !== user.id){
+                button = <button type="submit" className='admire' id={'test'} onClick={() => AdmireClick(post)}>Admire</button>
+                return
+              }
+            })}
+            {button}
             </div>
             </div>
             )
