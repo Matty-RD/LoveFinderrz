@@ -5,7 +5,6 @@ import { useDispatch, useSelector} from "react-redux";
 import { useEffect} from "react";
 import { useHistory, NavLink } from "react-router-dom";
 import './postPage.css';
-import './Glootie.png';
 
 function PostsPage() {
     const dispatch = useDispatch();
