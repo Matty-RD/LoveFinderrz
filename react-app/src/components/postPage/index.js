@@ -1,10 +1,10 @@
 import { getAllPostsThunk, deletePostThunk } from "../../store/post";
 import { getAllMatchesThunk } from "../../store/match";
-import { createMatchThunk } from "../../store/match"
+import { createMatchThunk } from "../../store/match";
 import { useDispatch, useSelector} from "react-redux";
 import { useEffect} from "react";
-import { useHistory, NavLink } from "react-router-dom"
-import './postPage.css'
+import { useHistory, NavLink } from "react-router-dom";
+import './postPage.css';
 
 function PostsPage() {
     const dispatch = useDispatch();
@@ -14,6 +14,7 @@ function PostsPage() {
     const user = useSelector((state) => state.session.user)
     const postsObject = useSelector((state) => state.posts);
     const posts = Object.values(postsObject);
+    const sortedPost = posts.sort().reverse();
     const matchesObject = useSelector((state) => state.matches);
     const matches = Object.values(matchesObject);
     const usersMatches = matches.filter(match => match.first_userId === sessionUser.id)
@@ -49,7 +50,7 @@ function PostsPage() {
       return (
         <>
         <div>
-        {posts.map(post =>{
+        {sortedPost.map(post =>{
           if(sessionUser.id === post.userId) {
             return (
               <div key={post.id} className='postPage'>

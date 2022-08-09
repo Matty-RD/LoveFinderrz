@@ -22,6 +22,11 @@ const NavBar = () => {
           </NavLink>
           </li> */}
           <li className='navButtons'>
+          <button><NavLink to={`/users/${sessionUser.id}`} activeClassName='active' className='innerNavButton'>
+            Profile
+          </NavLink></button>
+          </li>
+          <li className='navButtons'>
           <button><NavLink to='/posts' exact={true} activeClassName='active' className='innerNavButton'>
             Post
           </NavLink></button>
