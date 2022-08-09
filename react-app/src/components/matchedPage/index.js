@@ -42,7 +42,7 @@ function MatchedPage() {
           return (
             <div key={filteredMatch.id} className="matchPage">
             <h1><NavLink to={`/users/${filteredMatch.id}`}>{filteredMatch.liker.username}</NavLink></h1>
-            <img alt='' className="profilepicture" src={filteredMatch.liker.profile_pic}/>
+            <img alt='' className="profilepicture" src={filteredMatch.liker.profile_pic} onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <div className="buttonDiv">
             <button type='submit' id={filteredMatch.id} onClick={deleteM}>Unmatch</button>
             </div>
@@ -52,7 +52,7 @@ function MatchedPage() {
         return (
           <div key={filteredMatch.id} className="matchPage">
           <h1><NavLink to={`/users/${filteredMatch.id}`}>{filteredMatch.liked.username}</NavLink></h1>
-          <img alt='' className="profilepicture" src={filteredMatch.liked.profile_pic}/>
+          <img alt='' className="profilepicture" src={filteredMatch.liked.profile_pic} onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
           <div className="buttonDiv">
           <button type='submit' id={filteredMatch.id} onClick={deleteM}>Unmatch</button>
           </div>
