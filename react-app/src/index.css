@@ -84,3 +84,9 @@ input {
   .formWrapper {
     margin-bottom: 20px;
   }
+
+  p {
+    word-break: break-word;
+    overflow: normal;
+  }
+
