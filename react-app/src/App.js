@@ -13,6 +13,7 @@ import MatchedPage from './components/matchedPage';
 import EditPostsPage from './components/postEdit';
 import CreatePostsPage from './components/postForm';
 import MessagesPage from './components/messagePAge';
+import HomePage from './components/homePage';
 import { authenticate } from './store/session';
 
 function App() {
@@ -65,9 +66,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <div className='lovefinderrz'>
-          <img alt='' src='https://www.gamespot.com/a/uploads/scale_medium/171/1712892/3605592-screen%20shot%202019-11-18%20at%2012.15.28%20am.png' height='600px'/>
-          </div>
+          <HomePage />
         </Route>
       </Switch>
     </BrowserRouter>

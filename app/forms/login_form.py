@@ -22,8 +22,18 @@ def password_matches(form, field):
     if not user.check_password(password):
         raise ValidationError('Password was incorrect.')
 
+def blankPassword(form, field):
+    password = field.data
+    if(password  == ''):
+        raise ValidationError('Please provide a password!')
+
+def blankEmail(form, field):
+    email = field.data
+    if(email  == ''):
+        raise ValidationError('Please provide an email!')
+
+
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired(), user_exists])
-    password = StringField('password', validators=[
-                           DataRequired(), password_matches])
+    email = StringField('email', validators=[DataRequired(message='Please provide an email!'), user_exists])
+    password = StringField('password', validators=[DataRequired(message='Please provide a password!'), password_matches])

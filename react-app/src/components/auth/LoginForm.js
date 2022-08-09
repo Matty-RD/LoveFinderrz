@@ -53,8 +53,9 @@ const LoginForm = () => {
   return (
     <form onSubmit={onLogin}>
       <div>
+      <div>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div className='error' key={ind}>{error}</div>
         ))}
       </div>
       <div>
@@ -76,8 +77,9 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
+        </div>
         <div className='buttonDiv'>
-        <button type='submit'>Login</button>
+        <button type='submit' className="button">Login</button>
         <button type='submit' className="button" onClick={demoUserOne}>Demo 1</button>
         <button type='submit' className="button" onClick={demoUserTwo}>Demo 2</button>
         </div>

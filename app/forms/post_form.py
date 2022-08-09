@@ -6,4 +6,4 @@ class PostsForm(FlaskForm):
     userId = IntegerField('userId', validators=[DataRequired()])
     title = StringField('title', validators=[DataRequired()])
     caption = StringField('caption', validators=[DataRequired()])
-    post_pic = StringField('post_pic')
+    post_pic = StringField('post_pic', validators=[DataRequired()])

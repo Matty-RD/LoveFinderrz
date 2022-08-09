@@ -56,7 +56,7 @@ function PostsPage() {
             <h1 className='posterName' ><NavLink to={`/users/${post.userId}`}>{post.user.username}</NavLink></h1>
             <h4 className="postTitle">{post.title}</h4>
             <img alt='' src={post.post_pic} width="400" height="210" className="postpic"/>
-            <p>{post.caption}</p>
+            <p className="caption">{post.caption}</p>
             <div className='buttonDiv'>
             <button type="button" onClick={() => dispatch(deletePostThunk(post.id))}>Delete</button>
             <button type="button" id={post.id} onClick={EditClick}>Edit</button>
@@ -71,7 +71,7 @@ function PostsPage() {
             <h1 className='posterName' ><NavLink to={`/users/${post.userId}`}>{post.user.username}</NavLink></h1>
             <h4 className="postTitle">{post.title}</h4>
             <img alt='' src={post.post_pic} width="400" height="210" className="postpic"/>
-            <p>{post.caption}</p>
+            <p className="caption">{post.caption}</p>
             <div className='buttonDiv'>
             {usersMatches.map(match => {
               if(match.postId === post.id && match.first_userId === user.id) {
