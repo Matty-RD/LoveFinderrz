@@ -68,7 +68,7 @@ function UserProfile() {
     <>
     <ul className='userInfo'>
       <li>
-        <img alt='profile pic' className="profilepicture" src={user.profile_pic}/>
+        <img alt='profile pic' className="profilepicture" src={user.profile_pic} onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
       </li>
       <li>
         <strong>Username:</strong> {user.username}
