@@ -28,6 +28,13 @@ function EditPostsPage() {
 
       let error = false;
       errorsObj = {...errorsObj};
+      if(title === '') {
+        errorsObj.title = "Requires Title!";
+        error = true;
+      } else if (title.length > 25) {
+        errorsObj.title = "Titles must be longer than 5 characters, but shorter than 25";
+        error = true;
+      }
       if (!post_pic.includes(".jpg") && !post_pic.includes(".png") && !post_pic.includes(".JPG") && !post_pic.includes(".PNG") && !post_pic.includes("image") && !post_pic.includes(".gif") && !post_pic.includes(".GIF")) {
         errorsObj.post_pic = "Image URL must be in .jpg or .png or .gif format"
         error = true
@@ -35,13 +42,6 @@ function EditPostsPage() {
       else if (post_pic.length < 10) {
         errorsObj.post_pic = "Image URL must be at least 10 characters."
         error = true
-      }
-      if(title === '') {
-        errorsObj.caption = "Requires Title!";
-        error = true;
-      } else if (title.length > 25) {
-        errorsObj.title = "Titles must be longer than 5 characters, but shorter than 25";
-        error = true;
       }
       if(caption === '') {
         errorsObj.caption = "Requires a caption!";
@@ -51,6 +51,7 @@ function EditPostsPage() {
         error = true;
       }
       setErrors(errorsObj);
+      console.log(errorsObj);
 
       if(!error) {
       const updatedPost = {
@@ -68,18 +69,33 @@ function EditPostsPage() {
     history.push("/posts/");
   };
 
-
   return (
     <form>
       <div>
-      <h2>Edit your POST!</h2>
-      {Object.values(errors).map((error, idx) => <li key={idx}>{error}</li>)}
-      <input type="text" className='inputs' placeholder="Title" value={title} onChange={updateTitle}/>
-      <input type="text" className='inputs' placeholder="Post Picture" value={post_pic} onChange={updatePost_pic}/>
-      <input type="text" className='inputs' placeholder="Caption" value={caption} onChange={updateCaption}/>
+      <div>
+      <h1>Edit your POST!</h1>
+      </div>
+      <div className="error">
+      {Object.values(errors).map((error, idx) => <div><li key={idx}>{error}</li></div>)}
+      </div>
+      <div>
+      <label><b>Title</b></label>
+      <input type="text" className='inputs' value={title} onChange={updateTitle}/>
+      <label><small>required</small></label>
+      </div>
+      <div>
+      <label><b>Post Pic</b></label>
+      <input type="text" className='inputs' value={post_pic} onChange={updatePost_pic}/>
+      <label><small>required</small></label>
+      </div>
+      <div>
+      <label><b>Caption</b></label>
+      <input type="text" className='inputs' value={caption} onChange={updateCaption}/>
+      <label><small>required</small></label>
+      </div>
       <div className='buttonDiv'>
-      <button type="submit" onClick={handleSubmit}>Update</button>
-      <button type="button" onClick={handleCancelClick}>Cancel</button>
+      <button className="button" type="submit" onClick={handleSubmit}>Post</button>
+      <button className="button" type="button" onClick={handleCancelClick}>Cancel</button>
       </div>
       </div>
     </form>

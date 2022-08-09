@@ -10,6 +10,9 @@
 .noMatches{
     display: grid;
     justify-items: center;
+    margin-top: 80px;
+    background-color: yellow;
+    border: coral 3px solid;
 }
 
 h1 {

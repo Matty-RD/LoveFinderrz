@@ -57,9 +57,14 @@ def passwordChecker(form, field):
     if(len(password) < 3):
         raise ValidationError('Please provide a longer password.')
 
+def emailCheck(form, field):
+    email = field.data
+    if(not '@' in email or not '.' in email):
+        raise ValidationError('Please provide a valid email')
+
 class SignUpForm(FlaskForm):
     username = StringField('username', validators=[DataRequired(), username_exists, usernameChecker])
-    email = StringField('email', validators=[DataRequired(), user_exists])
+    email = StringField('email', validators=[DataRequired(), user_exists, emailCheck])
     password = StringField('password', validators=[DataRequired(), passwordChecker])
     full_name = StringField('full_name', validators=[DataRequired(), nameChecker])
     date_of_birth = DateField('date_of_birth', validators=[DataRequired(), overEighteen])

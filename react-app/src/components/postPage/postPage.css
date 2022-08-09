@@ -2,15 +2,28 @@
     border: blueviolet solid 4px;
     padding: 10px;
     margin: 10px;
-    background-color: azure;
+    background-color: white;
 }
 
 .posterName {
     display: flex;
     align-content: left;
+    font-weight: bold;
 }
 
 .postTitle {
     display: grid;
     justify-content: center;
+    font-weight: bolder;
+}
+
+div {
+    display: grid;
+    justify-self: center;
+}
+
+.caption {
+    margin-top: 0px;
+    padding: 0px;
+    font-weight: bold;
 }

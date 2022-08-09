@@ -32,6 +32,7 @@ function MatchedPage() {
       return (
         <div className="noMatches">
           <h2>Maybe try making some new posts!</h2>
+          <p>Showing others what makes you interesting is the best way to get somoene interested!</p>
         </div>
       )
     } else if(matches.length > 0) {
