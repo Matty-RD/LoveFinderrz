@@ -77,17 +77,17 @@ function CreatePostsPage() {
           <div className="error">
           {Object.values(errors).map((error, idx) => <div><li key={idx}>{error}</li></div>)}
           </div>
-          <div>
+          <div className='formWrapper'>
           <label><b>Title</b></label>
           <input type="text" value={title} onChange={updateTitle}/>
           <label><small>required</small></label>
           </div>
-          <div>
+          <div className='formWrapper'>
           <label><b>Post Pic</b></label>
           <input type="text" value={post_pic} onChange={updatePic}/>
           <label><small>required</small></label>
           </div>
-          <div>
+          <div className='formWrapper'>
           <label><b>Caption</b></label>
           <input type="text" value={caption} onChange={updateCaption}/>
           <label><small>required</small></label>
