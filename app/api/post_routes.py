@@ -39,6 +39,7 @@ def post_post():
 @login_required
 def put_post(id):
     post = Post.query.get(id)
+    form['csrf_token'].data = request.cookies['csrf_token']
     data = request.json
     post.post_pic = data['post_pic']
     post.caption = data['caption']
