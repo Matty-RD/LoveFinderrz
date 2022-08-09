@@ -31,6 +31,11 @@ function HomePage() {
 
         <div className="comicImage">
         <img alt="Glootie" src="https://pbs.twimg.com/media/D_6MohTXkAAen22?format=jpg&name=small"/>
+        <div className="gitHubDiv">
+                <a className="feet" href="https://github.com/MonkeyToji">
+                    About me: Matty Dickerson
+                </a>
+            </div>
         </div>
         </div>
         </>
