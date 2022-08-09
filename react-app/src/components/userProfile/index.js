@@ -7,6 +7,7 @@ import { getAllMatchesThunk } from "../../store/match";
 import './userPage.css'
 
 
+
 function UserProfile() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -87,7 +88,7 @@ function UserProfile() {
               <div key={post.id} className='userPage'>
             <h1 className='posterName' >{post.user.username}</h1>
             <h4 className="postTitle">{post.title}</h4>
-            <img alt='' src={post.post_pic} width="400" height="210" className="postpic"/>
+            <img alt='' src={post.post_pic} width="400" height="210" className="postpic" onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <p className="caption">{post.caption}</p>
             <div className='buttonDiv'>
             <button type="button" onClick={() => dispatch(deletePostThunk(post.id))}>Delete</button>
@@ -102,7 +103,7 @@ function UserProfile() {
             <div key={post.id} className='postPage'>
             <h1 className='posterName' >{post.user.username}</h1>
             <h4 className="postTitle">{post.title}</h4>
-            <img alt='' src={post.post_pic} width="400" height="210" className="postpic"/>
+            <img alt='' src={post.post_pic} width="400" height="210" className="postpic" onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <p className="caption">{post.caption}</p>
             <div className='buttonDiv'>
             {usersMatches.map(match => {

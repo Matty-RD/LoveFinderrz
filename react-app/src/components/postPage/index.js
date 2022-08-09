@@ -5,6 +5,7 @@ import { useDispatch, useSelector} from "react-redux";
 import { useEffect} from "react";
 import { useHistory, NavLink } from "react-router-dom";
 import './postPage.css';
+import './Glootie.png';
 
 function PostsPage() {
     const dispatch = useDispatch();
@@ -46,7 +47,6 @@ function PostsPage() {
         dispatch(createMatchThunk(match))
       }
 
-
       return (
         <>
         <div>
@@ -56,7 +56,7 @@ function PostsPage() {
               <div key={post.id} className='postPage'>
             <h1 className='posterName' ><NavLink to={`/users/${post.userId}`}>{post.user.username}</NavLink></h1>
             <h4 className="postTitle">{post.title}</h4>
-            <img alt='' src={post.post_pic} width="400" height="210" className="postpic"/>
+            <img alt='' src={post.post_pic} width="400" height="210" className="postpic" onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <p className="caption">{post.caption}</p>
             <div className='buttonDiv'>
             <button type="button" onClick={() => dispatch(deletePostThunk(post.id))}>Delete</button>
@@ -71,7 +71,7 @@ function PostsPage() {
             <div key={post.id} className='postPage'>
             <h1 className='posterName' ><NavLink to={`/users/${post.userId}`}>{post.user.username}</NavLink></h1>
             <h4 className="postTitle">{post.title}</h4>
-            <img alt='' src={post.post_pic} width="400" height="210" className="postpic"/>
+            <img alt='' src={post.post_pic} width="400" height="210" className="postpic" onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <p className="caption">{post.caption}</p>
             <div className='buttonDiv'>
             {usersMatches.map(match => {

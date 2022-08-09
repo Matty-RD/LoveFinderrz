@@ -11,7 +11,7 @@ function MatchedPage() {
     const sessionUser = useSelector(state => state.session.user);
     const matchesObject = useSelector((state) => state.matches);
     const matches = Object.values(matchesObject);
-    const usersMatches = matches.filter(match => match.second_userId === sessionUser.id || match.first_userId === sessionUser.id && match.matched === true)
+    const usersMatches = matches.filter(match => (match.second_userId === sessionUser.id || match.first_userId === sessionUser.id) && match.matched === true)
 
     useEffect(() => {
         dispatch(getAllMatchesThunk());
