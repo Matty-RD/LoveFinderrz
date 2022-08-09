@@ -78,17 +78,17 @@ function EditPostsPage() {
       <div className="error">
       {Object.values(errors).map((error, idx) => <div><li key={idx}>{error}</li></div>)}
       </div>
-      <div>
+      <div className='formWrapper'>
       <label><b>Title</b></label>
       <input type="text" className='inputs' value={title} onChange={updateTitle}/>
       <label><small>required</small></label>
       </div>
-      <div>
+      <div className='formWrapper'>
       <label><b>Post Pic</b></label>
       <input type="text" className='inputs' value={post_pic} onChange={updatePost_pic}/>
       <label><small>required</small></label>
       </div>
-      <div>
+      <div className='formWrapper'>
       <label><b>Caption</b></label>
       <input type="text" className='inputs' value={caption} onChange={updateCaption}/>
       <label><small>required</small></label>

@@ -5,7 +5,7 @@ html {
     margin: 25px;
     margin-top: 0px;
     justify-content: center;
-    background-color: grey;
+    background-color: #C6C6C6;
     font-family:Arial, Helvetica, sans-serif
 }
 
@@ -40,7 +40,6 @@ form {
     display: grid;
     justify-content: center;
     border: lightslategrey 2px solid;
-    background-color: ;
     padding: 40px;
 }
 
@@ -71,3 +70,17 @@ nav {
     position: relative;
     margin-top: 0px;
 }
+
+input {
+    color: black;
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background-color: #F5F5f5;
+    border: black 2px solid;
+  }
+
+  .formWrapper {
+    margin-bottom: 20px;
+  }
