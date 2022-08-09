@@ -31,7 +31,7 @@ function CreatePostsPage() {
     if(title === '') {
       errorsObj.title = "Requires Title!";
       error = true;
-    } else if (title.length > 25) {
+    } else if (title.length > 25 || title.length < 5) {
       errorsObj.title = "Titles must be longer than 5 characters, but shorter than 25";
       error = true;
     }
@@ -47,7 +47,7 @@ function CreatePostsPage() {
       errorsObj.caption = "Requires a caption!";
       error = true;
     } else if (caption.length < 5 || caption.length > 200) {
-      errorsObj.caption = "captions must be longer than 5 characters and shorter than 200";
+      errorsObj.caption = "captions must be longer than 5 characters and shorter than 200 characters";
       error = true;
     }
     setErrors(errorsObj);

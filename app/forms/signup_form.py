@@ -44,8 +44,11 @@ def nameChecker(form, field):
 
 def usernameChecker(form, field):
     username = field.data
-    if(len(username) < 5 ):
-        raise ValidationError('Please provide a longer username.')
+    if(len(username) < 5 or len(username) > 15):
+        raise ValidationError('Please provide a longer username at least over 5 characters.')
+    elif(len(username) > 15):
+        raise ValidationError('Please provide a username less than 25 characters.')
+
 
 def cityChecker(form, field):
     city = field.data
