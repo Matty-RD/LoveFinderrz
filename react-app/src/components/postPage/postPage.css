@@ -28,3 +28,11 @@ div {
     font-weight: bold;
     max-width: 400px;
 }
+
+.pfp {
+    display: flex;
+}
+
+.pfp img {
+    border-radius: 10px;
+}

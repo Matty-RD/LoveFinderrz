@@ -86,7 +86,10 @@ function UserProfile() {
           if(sessionUser.id === post.userId) {
             return (
               <div key={post.id} className='userPage'>
+            <span className="pfp">
+            <img alt='' src={post.user.profile_pic} width="75" height="75" className="postpic" onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <h1 className='posterName' >{post.user.username}</h1>
+            </span>
             <h4 className="postTitle">{post.title}</h4>
             <img alt='' src={post.post_pic} width="400" height="210" className="postpic" onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <p className="caption">{post.caption}</p>
@@ -101,7 +104,10 @@ function UserProfile() {
           let button = <button type="submit" className='admire' id={'test'} onClick={() => AdmireClick(post)}>Admire</button>
           return (
             <div key={post.id} className='postPage'>
+            <span className="pfp">
+            <img alt='' src={post.user.profile_pic} width="75" height="75" className="postpic" onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <h1 className='posterName' >{post.user.username}</h1>
+            </span>
             <h4 className="postTitle">{post.title}</h4>
             <img alt='' src={post.post_pic} width="400" height="210" className="postpic" onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <p className="caption">{post.caption}</p>
