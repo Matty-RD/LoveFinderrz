@@ -1,4 +1,5 @@
 import './homePage.css'
+import { AiFillGithub } from 'react-icons/ai'
 
 
 function HomePage() {
@@ -33,7 +34,7 @@ function HomePage() {
         <img alt="Glootie" src="https://pbs.twimg.com/media/D_6MohTXkAAen22?format=jpg&name=small"/>
         <div className="gitHubDiv">
                 <a className="feet" href="https://github.com/MonkeyToji">
-                    About me: Matty Dickerson
+                    About me: Matty Dickerson <AiFillGithub className="githubby" href="https://github.com/MonkeyToji"/>
                 </a>
             </div>
         </div>
