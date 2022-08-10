@@ -90,3 +90,11 @@ input {
     overflow: normal;
   }
 
+
+  .glootie {
+    height: 55px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    border-color: crimson;
+  }
