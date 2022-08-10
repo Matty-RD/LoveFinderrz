@@ -29,7 +29,7 @@ const NavBar = () => {
           </li>
           <li className='navButtons'>
           <button><NavLink to='/posts' exact={true} activeClassName='active' className='innerNavButton'>
-            Post
+            Posts
           </NavLink></button>
           </li>
           <li className='navButtons'>
