@@ -1,5 +1,5 @@
 import './homePage.css'
-import { AiFillGithub } from 'react-icons/ai'
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 
 
 function HomePage() {
@@ -36,7 +36,10 @@ function HomePage() {
                 <a className="feet" href="https://github.com/MonkeyToji">
                     About me: Matty Dickerson <AiFillGithub className="githubby" href="https://github.com/MonkeyToji"/>
                 </a>
-            </div>
+                <a className="feet" href="https://www.linkedin.com/in/matthew-dickerson-628228243/">
+                    <AiFillLinkedin className="githubby" href="https://www.linkedin.com/in/matthew-dickerson-628228243/"/>
+                </a>
+        </div>
         </div>
         </div>
         </>

@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector } from 'react-redux';
+import './navBarImage/Mask_group.png'
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
