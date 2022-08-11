@@ -26,13 +26,9 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
-    } else if (password !== repeatPassword) {
-      const data = await dispatch(signUp(username, email, password, full_name, date_of_birth, profile_pic, city));
-      if (data) {
-        setErrors(['Passwords must Match', ...data])
-      }
+    } else {
+      setErrors(['Passwords do not Match.'])
     }
-
 };
 
 
