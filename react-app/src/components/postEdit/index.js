@@ -85,7 +85,7 @@ function EditPostsPage() {
       </div>
       <div className='formWrapper'>
       <label><b>Post Pic</b></label>
-      <input type="text" className='inputs' value={post_pic} onChange={updatePost_pic}/>
+      <input type="text" className='inputs' placeholder='Image URL' value={post_pic} onChange={updatePost_pic}/>
       <label><small>required</small></label>
       </div>
       <div className='formWrapper'>

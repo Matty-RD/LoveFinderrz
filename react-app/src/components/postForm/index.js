@@ -10,7 +10,7 @@ function CreatePostsPage() {
 
     const user = useSelector(state => state.session.user)
 
-    
+
     const[userId] = useState(user.id);
     const [caption, setCaption] = useState("");
     const [post_pic, setPost_pic] = useState("");
@@ -85,7 +85,7 @@ function CreatePostsPage() {
           </div>
           <div className='formWrapper'>
           <label><b>Post Pic</b></label>
-          <input type="text" value={post_pic} onChange={updatePic}/>
+          <input type="text" placeholder='Image URL' value={post_pic} onChange={updatePic}/>
           <label><small>required</small></label>
           </div>
           <div className='formWrapper'>
