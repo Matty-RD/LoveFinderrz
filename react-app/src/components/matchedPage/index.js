@@ -35,7 +35,7 @@ function MatchedPage() {
       return (
         <>
         <div>
-          <h1>List of Matched Users!</h1>
+          <h1>Matches you have made!</h1>
           <p>Feel free to view their page by clicking their name!</p>
         {usersMatches.map(filteredMatch  =>{
           if(sessionUser.id === filteredMatch.second_userId) {

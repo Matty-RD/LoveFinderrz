@@ -102,6 +102,7 @@ function UserProfile() {
 
           } else {
           let button = <button type="submit" className='admire' id={'test'} onClick={() => AdmireClick(post)}>Admire</button>
+          let sentMessage = <p></p>
           return (
             <div key={post.id} className='postPage'>
             <span className="pfp">
@@ -115,6 +116,7 @@ function UserProfile() {
             {usersMatches.map(match => {
               if(match.postId === post.id && match.first_userId === sessionUser.id) {
                 button = <button type="submit" className='admire' id={'test'} onClick={() => AdmireClick(post)} disabled>Admired</button>
+                sentMessage = <p>We sent {post.user.username} your admire!</p>
                 return
               } else if (match.postId === post.id && match.first_userId !== sessionUser.id){
                 button = <button type="submit" className='admire' id={'test'} onClick={() => AdmireClick(post)}>Admire</button>
@@ -122,6 +124,9 @@ function UserProfile() {
               }
             })}
             {button}
+            </div>
+            <div>
+            {sentMessage}
             </div>
             </div>
             )

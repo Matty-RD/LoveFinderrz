@@ -10,6 +10,7 @@ function CreatePostsPage() {
 
     const user = useSelector(state => state.session.user)
 
+    
     const[userId] = useState(user.id);
     const [caption, setCaption] = useState("");
     const [post_pic, setPost_pic] = useState("");
