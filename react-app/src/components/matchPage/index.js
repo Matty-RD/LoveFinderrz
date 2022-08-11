@@ -7,30 +7,42 @@ import './matchPage.css'
 function MatchesPage() {
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(getAllMatchesThunk());
+      }, [dispatch]);
+
     const sessionUser = useSelector(state => state.session.user);
     const matchesObject = useSelector((state) => state.matches);
     const matches = Object.values(matchesObject);
     const usersMatches = matches.filter(match => match.second_userId === sessionUser.id && match.matched === false)
 
-    useEffect(() => {
-        dispatch(getAllMatchesThunk());
-      }, [dispatch]);
 
-    const matchButton = (e) => {
-      e.preventDefault();
-      const id = e.target.id
-      const matched = true;
-      const updateMatch = {
-        matched,
-      };
-      dispatch(updateMatchThunk(updateMatch, id));
+    const obj = {};
+    for(const m1 of usersMatches) {
+      obj[m1.first_userId] = m1;
+    }
+    const fullFilter = Object.values(obj)
+
+
+
+
+    const matchButton = (filteredMatch) => {
+      const filt = usersMatches.filter(match => match.second_userId === sessionUser.id && match.first_userId === filteredMatch.first_userId)
+      for(const allMatches of filt) {
+        const matched = true;
+        const updateMatch = {
+          matched,
+        };
+        dispatch(updateMatchThunk(updateMatch, allMatches.id));
+      }
     }
 
 
-    const deleteM = (e) => {
-      e.preventDefault();
-      const matchId = Number(e.target.id);
-      dispatch(deleteMatchesThunk(matchId))
+    const deleteM = async(filteredMatch) => {
+      const filt = usersMatches.filter(match => match.second_userId === sessionUser.id && match.first_userId === filteredMatch.first_userId)
+      for(const allMatches of filt) {
+        await dispatch(deleteMatchesThunk(allMatches.id))
+      }
     }
 
 
@@ -48,14 +60,14 @@ function MatchesPage() {
         <div>
           <h1>Admires you recieved!</h1>
           <p>Feel free to view their page by clicking their name!</p>
-        {usersMatches.map(filteredMatch  =>{
+        {fullFilter.map(filteredMatch  =>{
           return (
             <div key={filteredMatch.id} className="matchPage">
             <h1><NavLink to={`/users/${filteredMatch.first_userId}`}>{filteredMatch.liker.username}</NavLink></h1>
             <img alt='' className="profilepicture" src={filteredMatch.liker.profile_pic} onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <div className="buttonDiv">
-            <button type='submit' id={filteredMatch.id} onClick={matchButton}>Match?</button>
-            <button type='submit' id={filteredMatch.id} onClick={deleteM}>Pass?</button>
+            <button type='submit'  onClick={() => matchButton(filteredMatch)}>Match?</button>
+            <button type='submit' onClick={() => deleteM(filteredMatch)}>Pass?</button>
             </div>
             </div>
             )
