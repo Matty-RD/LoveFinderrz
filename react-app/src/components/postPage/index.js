@@ -69,6 +69,7 @@ function PostsPage() {
 
           } else {
           let button = <button type="submit" className='admire' id={'test'} onClick={() => AdmireClick(post)}>Admire</button>
+          let sentMessage = <p></p>
           return (
             <div key={post.id} className='postPage'>
             <span className="pfp">
@@ -82,6 +83,7 @@ function PostsPage() {
             {usersMatches.map(match => {
               if(match.postId === post.id && match.first_userId === user.id) {
                 button = <button type="submit" className='admire' id={'test'} onClick={() => AdmireClick(post)} disabled>Admired</button>
+                sentMessage = <p>We sent {post.user.username} your admire!</p>
                 return
               } else if (match.postId === post.id && match.first_userId !== user.id){
                 button = <button type="submit" className='admire' id={'test'} onClick={() => AdmireClick(post)}>Admire</button>
@@ -89,6 +91,9 @@ function PostsPage() {
               }
             })}
             {button}
+            </div>
+            <div>
+            {sentMessage}
             </div>
             </div>
             )

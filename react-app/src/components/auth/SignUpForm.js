@@ -5,6 +5,7 @@ import { signUp } from '../../store/session';
 import './SignupForm.css'
 
 const SignUpForm = () => {
+
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -17,8 +18,10 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+
   const onSignUp = async (e) => {
     e.preventDefault();
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password, full_name, date_of_birth, profile_pic, city));
       if (data) {

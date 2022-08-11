@@ -46,12 +46,12 @@ function MatchesPage() {
       return (
         <>
         <div>
-          <h1>Here are your possible Matches!</h1>
+          <h1>Admires you recieved!</h1>
           <p>Feel free to view their page by clicking their name!</p>
         {usersMatches.map(filteredMatch  =>{
           return (
             <div key={filteredMatch.id} className="matchPage">
-            <h1><NavLink to={`/users/${filteredMatch.id}`}>{filteredMatch.liker.username}</NavLink></h1>
+            <h1><NavLink to={`/users/${filteredMatch.first_userId}`}>{filteredMatch.liker.username}</NavLink></h1>
             <img alt='' className="profilepicture" src={filteredMatch.liker.profile_pic} onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <div className="buttonDiv">
             <button type='submit' id={filteredMatch.id} onClick={matchButton}>Match?</button>

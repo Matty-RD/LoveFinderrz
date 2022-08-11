@@ -26,6 +26,8 @@ def overEighteen(form, field):
     age = today.year - date_of_birth.year - ((today.month, today.day) < (date_of_birth.month, date_of_birth.day))
     if(age < 18):
         raise ValidationError('Sorry, you must be 18 years or older to join.')
+    elif(age > 101):
+        raise ValidationError('Sorry, you must be 100 years or younger to join.')
 
 def imageFile(form, field):
     profile_pic = field.data
@@ -57,6 +59,7 @@ def cityChecker(form, field):
 
 def passwordChecker(form, field):
     password = field.data
+    Rpassword = field.data
     if(len(password) < 3):
         raise ValidationError('Please provide a longer password.')
 
@@ -65,10 +68,12 @@ def emailCheck(form, field):
     if(not '@' in email or not '.' in email):
         raise ValidationError('Please provide a valid email')
 
+
 class SignUpForm(FlaskForm):
     username = StringField('username', validators=[DataRequired(), username_exists, usernameChecker])
     email = StringField('email', validators=[DataRequired(), user_exists, emailCheck])
     password = StringField('password', validators=[DataRequired(), passwordChecker])
+    Rpassword=StringField('repeatPassword', validators=[DataRequired(), passwordChecker])
     full_name = StringField('full_name', validators=[DataRequired(), nameChecker])
     date_of_birth = DateField('date_of_birth', validators=[DataRequired(), overEighteen])
     profile_pic = StringField('profile_pic', validators=[DataRequired(), imageFile])
