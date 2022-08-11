@@ -13,15 +13,22 @@ function MatchedPage() {
     const matches = Object.values(matchesObject);
     const usersMatches = matches.filter(match => (match.second_userId === sessionUser.id || match.first_userId === sessionUser.id) && match.matched === true)
 
+    const obj = {};
+    for(const m1 of usersMatches) {
+      obj[m1.first_userId] = m1;
+    }
+    const fullFilter = Object.values(obj)
+
     useEffect(() => {
         dispatch(getAllMatchesThunk());
       }, [dispatch]);
 
-    const deleteM = (e) => {
-      e.preventDefault();
-      const matchId = Number(e.target.id);
-      dispatch(deleteMatchesThunk(matchId))
-    }
+      const deleteM = async(filteredMatch) => {
+        const filt = usersMatches.filter(match => match.second_userId === sessionUser.id && match.first_userId === filteredMatch.first_userId)
+        for(const allMatches of filt) {
+          await dispatch(deleteMatchesThunk(allMatches.id))
+        }
+      }
 
     if(usersMatches.length === 0) {
       return (
@@ -37,14 +44,14 @@ function MatchedPage() {
         <div>
           <h1>Matches you have made!</h1>
           <p>Feel free to view their page by clicking their name!</p>
-        {usersMatches.map(filteredMatch  =>{
+        {fullFilter.map(filteredMatch  =>{
           if(sessionUser.id === filteredMatch.second_userId) {
           return (
             <div key={filteredMatch.id} className="matchPage">
             <h1><NavLink to={`/users/${filteredMatch.first_userId}`}>{filteredMatch.liker.username}</NavLink></h1>
             <img alt='' className="profilepicture" src={filteredMatch.liker.profile_pic} onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <div className="buttonDiv">
-            <button type='submit' id={filteredMatch.id} onClick={deleteM}>Unmatch</button>
+            <button type='submit' onClick={() => deleteM(filteredMatch)}>unmatch</button>
             </div>
             </div>
             )
@@ -54,7 +61,7 @@ function MatchedPage() {
           <h1><NavLink to={`/users/${filteredMatch.second_userId}`}>{filteredMatch.liked.username}</NavLink></h1>
           <img alt='' className="profilepicture" src={filteredMatch.liked.profile_pic} onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
           <div className="buttonDiv">
-          <button type='submit' id={filteredMatch.id} onClick={deleteM}>Unmatch</button>
+          <button type='submit' onClick={() => deleteM(filteredMatch)}>unmatch</button>
           </div>
           </div>
           )
