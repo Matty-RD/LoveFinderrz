@@ -5,3 +5,17 @@
 .signupLabel {
     font-weight: bold;
 }
+
+.twoRows {
+    display: flex;
+    padding: 10px;
+}
+
+.columnOne {
+    padding: 10px;
+}
+
+.columnTwo {
+    padding: 10px;
+}
+

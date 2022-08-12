@@ -53,6 +53,8 @@ const SignUpForm = () => {
           <div className='error' key={ind}>{error}</div>
         ))}
       </div>
+      <div className='twoRows'>
+      <div className='columnOne'>
       <div className='signUpInput'>
         <label className='signupLabel'>Username</label>
         <input  type='text' name='username' onChange={updateUsername} value={username} required={true}></input>
@@ -64,10 +66,17 @@ const SignUpForm = () => {
         <label><small>required</small></label>
       </div>
       <div className='signUpInput'>
+        <label className='signupLabel'>Email</label>
+        <input  type='text' name='email' onChange={updateEmail} value={email} required={true}></input>
+        <label><small>required</small></label>
+      </div>
+      <div className='signUpInput'>
         <label className='signupLabel'>Date of Birth</label>
         <input  type='date' name='date_of_birth' onChange={updateDOB} value={date_of_birth} required={true}></input>
         <label><small>required</small></label>
       </div>
+      </div>
+      <div className='columnTwo'>
       <div className='signUpInput'>
         <label className='signupLabel'>Profile Picture</label>
         <input type='text' name='profile_pic' placeholder='Image URL' onChange={updateProfilePic} required={true}></input>
@@ -76,11 +85,6 @@ const SignUpForm = () => {
       <div className='signUpInput'>
         <label className='signupLabel'>City</label>
         <input  type='text' name='city' onChange={updateCity} value={city} required={true}></input>
-        <label><small>required</small></label>
-      </div>
-      <div className='signUpInput'>
-        <label className='signupLabel'>Email</label>
-        <input  type='text' name='email' onChange={updateEmail} value={email} required={true}></input>
         <label><small>required</small></label>
       </div>
       <div className='signUpInput'>
@@ -93,7 +97,11 @@ const SignUpForm = () => {
         <input  type='password' name='repeat_password' onChange={updateRepeatPassword} value={repeatPassword} required={true}></input>
         <label><small>required</small></label>
       </div>
+      </div>
+      </div>
+      <div>
       <button type='submit'>Sign Up</button>
+      </div>
     </form>
   );
 };
