@@ -51,18 +51,29 @@ function UserProfile() {
     }
 
     const AdmireClick = (postInfo) => {
-        const postId = postInfo.id
-        const first_userId = Number(sessionUser.id);
-        const second_userId = Number(postInfo.userId);
-        const matched = false;
-        const match = {
-          postId,
-          first_userId,
-          second_userId,
-          matched
-        };
-        dispatch(createMatchThunk(match))
+      const alreadyMatched = matches.filter(match => match.second_userId === postInfo.userId)
+      const alreadyTrue = (curr) => curr.matched === false;
+      let matched = null;
+      if(alreadyMatched.every(alreadyTrue)) {
+        matched = false
+      } else {
+        matched = true
       }
+
+      const postId = postInfo.id
+      const first_userId = Number(sessionUser.id);
+      const second_userId = Number(postInfo.userId);
+      const match = {
+        postId,
+        first_userId,
+        second_userId,
+        matched
+      };
+      // console.log(match)
+      // console.log(alreadyMatched)
+      // console.log(usersMatches)
+      dispatch(createMatchThunk(match))
+    }
 
   return (
     <>

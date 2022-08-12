@@ -51,7 +51,6 @@ function EditPostsPage() {
         error = true;
       }
       setErrors(errorsObj);
-      console.log(errorsObj);
 
       if(!error) {
       const updatedPost = {

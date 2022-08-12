@@ -33,16 +33,25 @@ function PostsPage() {
 
 
       const AdmireClick = (postInfo) => {
+        const alreadyMatched = matches.filter(match => match.second_userId === postInfo.userId)
+        const alreadyTrue = (curr) => curr.matched === false;
+        let matched = null;
+        if(alreadyMatched.every(alreadyTrue)) {
+          matched = false
+        } else {
+          matched = true
+        }
+
         const postId = postInfo.id
         const first_userId = Number(user.id);
         const second_userId = Number(postInfo.userId);
-        const matched = false;
         const match = {
           postId,
           first_userId,
           second_userId,
           matched
         };
+        console.log(alreadyMatched)
         dispatch(createMatchThunk(match))
       }
 

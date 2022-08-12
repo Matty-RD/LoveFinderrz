@@ -17,18 +17,23 @@ function MatchedPage() {
     for(const m1 of usersMatches) {
       obj[m1.first_userId] = m1;
     }
-    const fullFilter = Object.values(obj)
+    const fullFilter = Object.values(obj);
+
+    console.log(usersMatches)
 
     useEffect(() => {
         dispatch(getAllMatchesThunk());
       }, [dispatch]);
 
       const deleteM = async(filteredMatch) => {
-        const filt = usersMatches.filter(match => match.second_userId === sessionUser.id && match.first_userId === filteredMatch.first_userId)
+        const filt = usersMatches.filter(match => match.first_userId === filteredMatch.first_userId)
         for(const allMatches of filt) {
+          console.log(allMatches)
           await dispatch(deleteMatchesThunk(allMatches.id))
         }
       }
+
+
 
     if(usersMatches.length === 0) {
       return (
