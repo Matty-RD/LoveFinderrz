@@ -1,24 +1,29 @@
-import { getAllMatchesThunk } from "../../store/match";
-import { useDispatch } from "react-redux";
+import { getAllMessagesThunk } from "../../store/message";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect} from "react";
 
 function MessagesPage() {
     const dispatch = useDispatch();
 
-    // const sessionUser = useSelector(state => state.session.user);
-    // const matchesObject = useSelector((state) => state.matches);
-    // const matches = Object.values(matchesObject);
-    // const usersMatches = matches.filter(match => match.second_userId === sessionUser.id && match.matched === false)
-
     useEffect(() => {
-        dispatch(getAllMatchesThunk());
+        dispatch(getAllMessagesThunk());
       }, [dispatch]);
 
-
+      const messagesObject = useSelector((state) => state.messages);
+      const messages = Object.values(messagesObject);
+      console.log(messages)
 
       return (
         <div>
           <h1>Messages!</h1>
+          {messages.map(messageInfo =>{
+            return (
+            <>
+            <h2>{messageInfo.sender}</h2>
+            <h2>{messageInfo.receiver}</h2>
+            <h2>{messageInfo.message}</h2>
+            </>
+          )})}
         </div>
       );
     }

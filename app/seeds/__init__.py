@@ -2,6 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .posts import seed_posts, undo_posts
 from .matches import seed_matches, undo_matches
+from .messages import seed_messages, undo_messages
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -13,7 +14,8 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users(),
     seed_posts(),
-    seed_matches()
+    seed_matches(),
+    seed_messages()
     # Add other seed functions here
 
 
@@ -22,5 +24,6 @@ def seed():
 def undo():
     undo_users(),
     undo_posts(),
-    undo_matches()
+    undo_matches(),
+    undo_messages()
     # Add other undo functions here

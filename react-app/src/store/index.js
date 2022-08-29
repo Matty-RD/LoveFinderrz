@@ -3,12 +3,14 @@ import { postsReducer } from './post';
 import thunk from 'redux-thunk';
 import session from './session'
 import { matchesReducer } from './match';
+import { messagesReducer } from './message';
 
 
 const rootReducer = combineReducers({
   session,
   posts: postsReducer,
-  matches: matchesReducer
+  matches: matchesReducer,
+  messages: messagesReducer
 });
 
 
