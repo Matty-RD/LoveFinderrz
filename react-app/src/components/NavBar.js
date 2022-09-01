@@ -47,11 +47,11 @@ const NavBar = () => {
             Matches
           </NavLink></button>
           </li>
-          {/* <li className='navButtons'>
+          <li className='navButtons'>
           <button><NavLink to='/messages' exact={true} activeClassName='active' className='innerNavButton'>
             Messages
           </NavLink></button>
-          </li> */}
+          </li>
         <li className='navButtons'>
           <LogoutButton />
         </li>
