@@ -50,7 +50,7 @@ function App() {
         <Route path='/matched' exact={true}>
           <MatchedPage />
         </Route>
-        <Route path='/messages' exact={true}>
+        <Route path='/messages/:id'>
           <MessagesPage />
         </Route>
         <Route path='/login' exact={true}>

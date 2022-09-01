@@ -31,11 +31,12 @@ function PostsPage() {
           history.push(`/posts/edit/${buttonData}`)
       }
 
+      console.log(usersMatches)
 
-      const AdmireClick = (postInfo) => {
+      const AdmireClick = async (postInfo) => {
         const alreadyMatched = matches.filter(match => match.second_userId === postInfo.userId)
         const alreadyTrue = (curr) => curr.matched === false;
-        let matched = null;
+        let matched = false;
         if(alreadyMatched.every(alreadyTrue)) {
           matched = false
         } else {
@@ -51,8 +52,7 @@ function PostsPage() {
           second_userId,
           matched
         };
-        console.log(alreadyMatched)
-        dispatch(createMatchThunk(match))
+        await dispatch(createMatchThunk(match))
       }
 
       return (

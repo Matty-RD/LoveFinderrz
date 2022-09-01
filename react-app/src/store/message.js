@@ -18,7 +18,7 @@ const deleteMessage = (id) => ({
 })
 
   export const getAllMessagesThunk = () => async(dispatch) => {
-    const response = await fetch('/api/messages/')
+    const response = await fetch(`/api/messages/`)
     const data = await response.json();
     dispatch(getAllMessages(data.messages))
     return data.messages

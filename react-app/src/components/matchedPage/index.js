@@ -1,12 +1,12 @@
 import { getAllMatchesThunk, deleteMatchesThunk } from "../../store/match";
 import { useDispatch, useSelector} from "react-redux";
 import { useEffect} from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import './matchPage.css'
 
 function MatchedPage() {
     const dispatch = useDispatch();
-    // const history = useHistory();
+    const history = useHistory();
 
     const sessionUser = useSelector(state => state.session.user);
     const matchesObject = useSelector((state) => state.matches);
@@ -19,7 +19,7 @@ function MatchedPage() {
     }
     const fullFilter = Object.values(obj);
 
-    console.log(usersMatches)
+
 
     useEffect(() => {
         dispatch(getAllMatchesThunk());
@@ -28,7 +28,7 @@ function MatchedPage() {
       const deleteM = async(filteredMatch) => {
         const filt = usersMatches.filter(match => match.first_userId === filteredMatch.first_userId)
         for(const allMatches of filt) {
-          console.log(allMatches)
+
           await dispatch(deleteMatchesThunk(allMatches.id))
         }
       }
@@ -56,7 +56,8 @@ function MatchedPage() {
             <h1><NavLink to={`/users/${filteredMatch.first_userId}`}>{filteredMatch.liker.username}</NavLink></h1>
             <img alt='' className="profilepicture" src={filteredMatch.liker.profile_pic} onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <div className="buttonDiv">
-            <button type='submit' onClick={() => deleteM(filteredMatch)}>unmatch</button>
+            <button type='button' onClick={() => history.push(`/messages/${filteredMatch.first_userId}`)}>Message</button>
+            <button type='submit' onClick={() => deleteM(filteredMatch)}>Unmatch</button>
             </div>
             </div>
             )
@@ -66,6 +67,7 @@ function MatchedPage() {
           <h1><NavLink to={`/users/${filteredMatch.second_userId}`}>{filteredMatch.liked.username}</NavLink></h1>
           <img alt='' className="profilepicture" src={filteredMatch.liked.profile_pic} onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
           <div className="buttonDiv">
+          <button type='button' onClick={() => history.push(`/messages/${filteredMatch.second_userId}`)}>Message</button>
           <button type='submit' onClick={() => deleteM(filteredMatch)}>unmatch</button>
           </div>
           </div>
