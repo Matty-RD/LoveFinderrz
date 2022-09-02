@@ -11,6 +11,7 @@ import './userPage.css'
 function UserProfile() {
   const dispatch = useDispatch();
   const history = useHistory();
+  
 
   const [user, setUser] = useState({});
   const { userId }  = useParams();
@@ -69,11 +70,13 @@ function UserProfile() {
         second_userId,
         matched
       };
-      // console.log(match)
-      // console.log(alreadyMatched)
-      // console.log(usersMatches)
       dispatch(createMatchThunk(match))
     }
+
+  const editUser = (id) => {
+    let usersID = Number(id)
+    history.push(`/users/edit/${usersID}`)
+  }
 
   return (
     <>
@@ -91,12 +94,19 @@ function UserProfile() {
         <strong>City:</strong> {user.city}
       </li>
     </ul>
+    <span>
+    {
+    Number(sessionUser.id) === Number(userId)
+    ? <button onClick={() => editUser(userId)}>Edit</button>
+    : null
+    }
+    </span>
     <div>
     <h1>{user.username}'s posts</h1>
     {sortedPost.map(post =>{
           if(sessionUser.id === post.userId) {
             return (
-              <div key={post.id} className='userPage'>
+            <div key={post.id} className='userPage'>
             <span className="pfp">
             <img alt='' src={post.user.profile_pic} width="75" height="75" className="postpic" onError={(e)=>{e.target.onerror = null; e.target.src="https://i.imgur.com/PiuLhut.png"}}/>
             <h1 className='posterName' >{post.user.username}</h1>
