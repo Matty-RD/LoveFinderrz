@@ -1,0 +1,40 @@
+div.messageBar {
+    display: flex;
+    width: 716px;
+    padding: 10px
+}
+
+div.timeBlock {
+    align-items: center;
+    width: 97px;
+    border: solid #806736c6 3px;
+    background-color: wheat;
+}
+
+div.nameBlock {
+    align-items: center;
+    width: 97px;
+    border: solid #806736c6 3px;
+    background-color: wheat;
+}
+
+div.messageBlock {
+    align-items: center;
+    width: 433px;
+    border: solid #806736c6 3px;
+    background-color: wheat;
+}
+
+div.deleteBlock {
+    align-items: center;
+    width: 100px;
+}
+
+input.messageInput {
+    width: 636px;
+}
+
+div.deleteBlock2 {
+    align-items: center;
+    width: 104px;
+}

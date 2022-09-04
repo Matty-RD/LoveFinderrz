@@ -2,6 +2,7 @@ import { getAllMessagesThunk, createMessageThunk, deleteMessageThunk } from "../
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState} from "react";
 import { useHistory, useParams } from "react-router-dom";
+import './messaging.css'
 
 
 function MessagesPage() {
@@ -52,20 +53,52 @@ function MessagesPage() {
           history.push(`/messages/${id}`)
         }
 
+
       return (
         <div>
           <h1>Messages!</h1>
           {filteredMessages.map(messageInfo =>{
-            return (
-              <>
-            <h2>{messageInfo.sender}</h2>
-            <h2>{messageInfo.receiver}</h2>
-            <h2>{messageInfo.message}</h2>
-            <button onClick={() => deleteMessage(messageInfo.id)}>Delete</button>
-            </>
-          )})}
-          <input type="text" value={message} onChange={updateMessage}/>
-          <button type="submit" onClick={handleSubmit}>Post</button>
+            if(user.id === messageInfo.sender) {
+              return (
+                <>
+              <div className="messageBar">
+                <div className="nameBlock">
+                  <h3>{messageInfo.senderInfo.username}</h3>
+                </div>
+                <div className="messageBlock">
+                  <p>{messageInfo.message}</p>
+                </div>
+                <div className="timeBlock">
+                    {messageInfo.created_at.substring(20,25)}
+                </div>
+                <div className="deleteBlock">
+                <button className="deleteBlockButton" onClick={() => deleteMessage(messageInfo.id)}>Delete</button>
+                </div>
+              </div>
+              </>
+            )} else {
+              return (
+                <>
+              <div className="messageBar">
+                <div className="nameBlock">
+                  <h3>{messageInfo.senderInfo.username}</h3>
+                </div>
+                <div className="messageBlock">
+                  <p>{messageInfo.message}</p>
+                </div>
+                <div className="timeBlock">
+                    {messageInfo.created_at.substring(20,25)}
+                </div>
+                <div className="deleteBlock2">
+                </div>
+              </div>
+              </>
+            )}
+          })}
+          <div className="messageBar">
+          <input className="messageInput" type="text" value={message} onChange={updateMessage}/>
+          <button type="submit" onClick={handleSubmit}>Send</button>
+          </div>
         </div>
       );
   }

@@ -20,5 +20,7 @@ class Message(db.Model):
             "id": self.id,
             "sender": self.sender,
             "receiver": self.receiver,
-            "message": self.message
+            "message": self.message,
+            "created_at": self.created_at,
+            "senderInfo": self.senders.to_dict()
         }
