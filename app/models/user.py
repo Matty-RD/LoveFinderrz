@@ -20,6 +20,10 @@ class User(db.Model, UserMixin):
 
     matchesOne = db.relationship("Match", back_populates="firstUserIds", foreign_keys="Match.first_userId")
     matchesTwo = db.relationship("Match", back_populates="secondUserIds", foreign_keys="Match.second_userId")
+
+    senderId = db.relationship("Message", back_populates="senders", foreign_keys="Message.sender")
+    receiverId = db.relationship("Message", back_populates="receivers", foreign_keys="Message.receiver")
+    
     posts = db.relationship("Post", back_populates="userIds")
 
     @property

@@ -101,6 +101,8 @@ export const signUp = (username, email, password, full_name, date_of_birth, prof
   }
 }
 
+
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:

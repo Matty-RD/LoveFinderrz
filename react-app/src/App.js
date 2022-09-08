@@ -14,6 +14,7 @@ import EditPostsPage from './components/postEdit';
 import CreatePostsPage from './components/postForm';
 import MessagesPage from './components/messagePAge';
 import HomePage from './components/homePage';
+import EditUser from './components/editUserPage';
 import { authenticate } from './store/session';
 
 function App() {
@@ -44,13 +45,16 @@ function App() {
         <Route path='/posts/edit/:id'>
           <EditPostsPage />
         </Route>
+        <Route path='/users/edit/:id'>
+          <EditUser />
+        </Route>
         <Route path='/matches' exact={true}>
           <MatchesPage />
         </Route>
         <Route path='/matched' exact={true}>
           <MatchedPage />
         </Route>
-        <Route path='/messages' exact={true}>
+        <Route path='/messages/:id'>
           <MessagesPage />
         </Route>
         <Route path='/login' exact={true}>
